@@ -1,4 +1,4 @@
-package com.example.app.batch.config;
+package com.example.app.batch.step;
 
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class BatchTaskletConfig {
+public class BatchStepConfig {
     @Autowired
-    private Tasklet tasklet1;
+    private Tasklet task1;
 
     @Autowired
-    private Tasklet tasklet2;
+    private Tasklet task2;
 
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
@@ -21,14 +21,14 @@ public class BatchTaskletConfig {
     @Bean
     public Step step1() {
         return stepBuilderFactory.get("step1")
-                .tasklet(tasklet1)
+                .tasklet(task1)
                 .build();
     }
 
     @Bean
     public Step step2() {
         return stepBuilderFactory.get("step2")
-                .tasklet(tasklet2)
+                .tasklet(task2)
                 .build();
     }
 }

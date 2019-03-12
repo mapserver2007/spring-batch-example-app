@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class Task2 implements Tasklet {
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext context) {
-        System.out.println("tasklet2");
+        System.out.println("step2(tasklet)");
         return RepeatStatus.FINISHED;
     }
 }
