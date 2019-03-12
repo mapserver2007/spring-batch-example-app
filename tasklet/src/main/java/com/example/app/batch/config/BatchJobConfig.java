@@ -1,5 +1,6 @@
 package com.example.app.batch.config;
 
+import com.example.app.batch.common.CustomBatchConfigurer;
 import com.example.app.batch.listener.ExampleJobListener;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -50,41 +51,6 @@ public class BatchJobConfig {
      */
     @Bean
     public DefaultBatchConfigurer batchConfigurer() {
-        return new DefaultBatchConfigurer() {
-            private JobRepository jobRepository;
-            private JobExplorer jobExplorer;
-            private JobLauncher jobLauncher;
-
-            {
-                MapJobRepositoryFactoryBean jobRepositoryFactory = new MapJobRepositoryFactoryBean();
-                try {
-                    jobRepository = jobRepositoryFactory.getObject();
-                    MapJobExplorerFactoryBean jobExplorerFactory = new MapJobExplorerFactoryBean(jobRepositoryFactory);
-                    jobExplorer = jobExplorerFactory.getObject();
-                    SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
-                    jobLauncher.setJobRepository(jobRepository);
-                    jobLauncher.afterPropertiesSet();
-                    this.jobLauncher = jobLauncher;
-
-                } catch (Exception ignore) {
-                    // ignore
-                }
-            }
-
-            @Override
-            public JobRepository getJobRepository() {
-                return jobRepository;
-            }
-
-            @Override
-            public JobExplorer getJobExplorer() {
-                return jobExplorer;
-            }
-
-            @Override
-            public JobLauncher getJobLauncher() {
-                return jobLauncher;
-            }
-        };
+        return new CustomBatchConfigurer();
     }
 }
