@@ -1,6 +1,5 @@
 package com.example.app.batch.common;
 
-import lombok.Getter;
 import org.springframework.batch.core.configuration.annotation.DefaultBatchConfigurer;
 import org.springframework.batch.core.explore.JobExplorer;
 import org.springframework.batch.core.explore.support.MapJobExplorerFactoryBean;
@@ -9,6 +8,9 @@ import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean;
 
+/**
+ * デフォルトでバッチが要求してくるDB接続をIn-Memory(Mapベース)に変更する設定
+ */
 public class CustomBatchConfigurer extends DefaultBatchConfigurer {
 
     private JobRepository jobRepository;
