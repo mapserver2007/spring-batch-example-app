@@ -1,4 +1,0 @@
-## usage
-```sh
-$> ./gradlew bootRun
-```

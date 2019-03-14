@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.batch.infrastructure.repository.ExampleRepositoryImpl">
+    <insert id="add">
+        INSERT INTO t01_example (created_at, updated_at, name) VALUES (NOW(), NOW(), #{name})
+    </insert>
+
+    <select id="findById" resultType="com.example.app.batch.domain.object.User">
+        SELECT
+            id,
+            name
+        FROM
+            t01_example
+        WHERE
+            id = #{id}
+    </select>
+</mapper>
