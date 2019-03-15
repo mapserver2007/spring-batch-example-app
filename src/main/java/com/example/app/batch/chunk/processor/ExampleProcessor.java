@@ -6,6 +6,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ExampleProcessor implements ItemProcessor<User, User> {
+    /**
+     * processメソッドはReaderで入力されたデータが空の場合
+     * 空のデータが渡ってくるのではなくそもそも呼ばれない。
+     * @param user
+     * @return
+     * @throws Exception
+     */
     @Override
     public User process(User user) {
         user.setName("processed-" + user.getName());
